@@ -3,7 +3,9 @@
     body {
 
     }
-    header {
+    #header {
+        position: relative;
+        text-align: center;
     }
     .block {
 

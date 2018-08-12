@@ -24,13 +24,13 @@ let hoverColor = new Color(150, 0, 0, 0.1);
 
 let stage = new createjs.Stage("main");
 
-iso.add(Shape.Prism(new Point(4, 2, 1)));//
+iso.add(Shape.Prism(new Point(2, 7, 1), red));//
 let dataUrl2 = canvas.toDataURL();//
 let bitmap2 = new createjs.Bitmap(dataUrl2);//
 bitmap2.name = 'uno';//
 iso.canvas.clear();//
 
-iso.add(Shape.Prism(new Point(2, 4, 1)));
+iso.add(Shape.Prism(new Point(4, 2, 1)));
 let dataUrl1 = canvas.toDataURL();
 let bitmap1 = new createjs.Bitmap(dataUrl1);
 bitmap1.name = 'dos';
@@ -63,8 +63,11 @@ function draw() {
 
     makeGrid();
 
-    iso.add(Shape.Prism(new Point(2, 4, 1)), red);//
+    iso.add(Shape.Prism(new Point(2, 7, 1)), red);
+    iso.add(Shape.Pyramid(Point(2, 7, 2)), red);
+
     iso.add(Shape.Prism(new Point(4, 2, 1)), red);
+    iso.add(Shape.Pyramid(Point(4, 2, 2)), red);
 
     // iso.add(Shape.Prism(Point(20, 10, 0)), black);
     iso.add(Shape.Prism(Point(20, 10, 1)), red);
@@ -97,22 +100,6 @@ function init() {
         console.log('clicked Uno');
     });
 }
-//
-// function handleInteraction(event) {
-//     if (event.type === "mouseover") {
-//         document.body.style.cursor = "pointer";
-//         if (event.target.name === 'uno'){//
-//             iso.add(Shape.Prism(new Point(4, 2, 1)), hoverColor);//
-//         } else {
-//             iso.add(Shape.Prism(new Point(2, 4, 1)), hoverColor);
-//         }
-//         console.log('Mouse Over:' + event.target.name);
-//     } else {
-//         console.log('Mouse Out');
-//         document.body.style.cursor = "default";
-//         draw();
-//     }
-// }
 
 function Octahedron(origin) {
 
@@ -142,35 +129,4 @@ function Octahedron(origin) {
      * sides equilateral triangles */
     return new Shape(faces).scale(center, Math.sqrt(2)/2, Math.sqrt(2)/2, 1);
 }
-
-// function loop() {
-//
-//     requestAnimationFrame(loop);
-//
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//
-//     draw();
-// }
-
-// requestAnimationFrame(loop);
-
-// var angle = 0;
-// function loop() {
-//     requestAnimationFrame(loop);
-//
-//     ctx.clearRect(0, 0, canvas.width, canvas.height)
-//
-//     iso.add(Shape.Prism(Point(0,0,0)));
-//     iso.add(Shape.Prism(Point(0,1,-1)));
-//     iso.add(Shape.Prism(Point(1,0,-1)));
-//     iso.add(Shape.Prism(Point(0,0,1)));
-//
-//     // iso.add(Octahedron(new Point(1, 1, 1))
-//     //         .rotateZ(new Point(1.5, 1.5, 0), angle)
-//     //     , new Color(200, 0, 180));
-//     // angle += 2 * Math.PI / 60;
-// }
-// requestAnimationFrame(loop);
-
-
 
